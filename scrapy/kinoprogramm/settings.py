@@ -66,8 +66,15 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'kinoprogramm.pipelines.KinoprogrammPipeline': 300,
+    'kinoprogramm.pipelines.MongoDBPipeline': 300,
 }
+
+MONGODB_HOST = os.environ.get('MONGODB_HOST', '192.168.99.100')
+MONGODB_PORT = int(os.environ.get('MONGODB_PORT', 27017))
+MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME', 'root')
+MONGODB_PASSWORD = os.environ.get('MONGODB_PASSWORD', '12345')
+MONGODB_DB = os.environ.get('MONGODB_DB', 'kinoprogramm')
+MONGODB_COLLECTION = os.environ.get('MONGODB_COLLECTION', 'kinos')
 
 
 # Enable and configure the AutoThrottle extension (disabled by default)
